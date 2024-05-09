@@ -71,6 +71,7 @@ jobs:
           JDBC_DATABASE_URL: ${{ secrets.JDBC_DATABASE_URL }}
           JDBC_DATABASE_USERNAME: ${{ secrets.JDBC_DATABASE_USERNAME }}
           PRODUCTION: ${{ secrets.PRODUCTION }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
 
   publish:
     name: Publish Docker Image
