@@ -8,13 +8,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class UserController {
     @Autowired
@@ -23,9 +20,9 @@ public class UserController {
     @Autowired
     private final UserService userService;
 
-    @PostMapping("/")
+    @GetMapping("/user")
     public ResponseEntity<?> getUser(
-            HttpServletRequest request, @RequestBody VerifyRequest action
+            HttpServletRequest request
     ) {
             String authHeader = request.getHeader("Authorization");
             if (authHeader == null || !authHeader.startsWith("Bearer")) {
@@ -36,7 +33,6 @@ public class UserController {
             if (username == null) {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Token does not contain a valid username.");
             }
-
             return ResponseEntity.ok(userService.findByUsername(username));
 
     }
