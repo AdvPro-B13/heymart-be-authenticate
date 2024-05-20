@@ -39,7 +39,7 @@ public class CustomerServiceTest {
         List<String> couponIds = new ArrayList<>();
         Customer customer1 = new Customer(1L, "John", "Doe", "pass123", "johndoe", "user", true, couponIds);
         customers.add(customer1);
-        Customer customer2 = new Customer(1L, "John", "Doe", "pass123", "johndoe", "user", true, couponIds);
+        Customer customer2 = new Customer(1L, "John", "Doe", "pass123", "johndoe", "user", false, couponIds);
         customers.add(customer2);
 
         when(customerRepository.findAll()).thenReturn(customers);
@@ -47,12 +47,11 @@ public class CustomerServiceTest {
         customerService.addCoupon("COUPON1");
 
         ArgumentCaptor<Customer> customerCaptor = ArgumentCaptor.forClass(Customer.class);
-        verify(customerRepository, times(2)).save(customerCaptor.capture());
+        verify(customerRepository, times(1)).save(customerCaptor.capture());
 
         List<Customer> savedCustomers = customerCaptor.getAllValues();
-        assertThat(savedCustomers).hasSize(2);
-        assertThat(savedCustomers.get(0).getCouponIds()).contains("COUPON1");
-        assertThat(savedCustomers.get(1).getCouponIds()).contains("COUPON1");
+        assertThat(savedCustomers).hasSize(1);
+        assertThat(savedCustomers.getFirst().getCouponIds()).contains("COUPON1");
     }
 
     @Test

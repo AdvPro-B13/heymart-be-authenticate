@@ -15,8 +15,11 @@ public class CustomerServiceImpl implements CustomerService {
     public void addCoupon(String couponId) {
         List<Customer> customerList = customerRepository.findAll();
         for (Customer customer : customerList) {
-            customer.getCouponIds().add(couponId);
-            customerRepository.save(customer);
+            if (customer.isActive()) {
+                System.out.println((customer.getUsername()));
+                customer.getCouponIds().add(couponId);
+                customerRepository.save(customer);
+            }
         }
     }
     public void removeCouponFromAll(String couponId) {
