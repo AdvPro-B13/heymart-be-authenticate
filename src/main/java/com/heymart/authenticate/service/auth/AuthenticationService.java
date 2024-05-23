@@ -66,7 +66,7 @@ public class AuthenticationService {
                 .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role("MANAGER")
-                .supermarketName(request.getSupermarketName())
+                .supermarketId(request.getSupermarketId())
                 .build();
 
         managerRepository.save(user);

@@ -9,15 +9,15 @@ import lombok.Getter;
 @Entity
 @DiscriminatorValue("MANAGER")
 public class Manager extends User{
-    @Column(name = "supermarket_name")
-    private String supermarketName;
+    @Column(name = "supermarket_id")
+    private String supermarketId;
 
     protected Manager() { super(); }
     @Builder
     public Manager(Long id, String firstName, String lastName,
                     String password, String username, String role,
-                    boolean active, String supermarketName) {
+                    boolean active, String supermarketId) {
         super(id,firstName,lastName,password,username,role,active);
-        this.supermarketName = supermarketName;
+        this.supermarketId = supermarketId;
     }
 }

@@ -18,7 +18,7 @@ public class ManagerTest {
         assertEquals("alicej", manager.getUsername());
         assertEquals("admin", manager.getRole());
         assertTrue(manager.isActive());
-        assertEquals("LocalMart", manager.getSupermarketName());
+        assertEquals("LocalMart", manager.getSupermarketId());
     }
 
     @Test
@@ -31,7 +31,7 @@ public class ManagerTest {
         assertNull(manager.getUsername());
         assertNull(manager.getRole());
         assertFalse(manager.isActive());
-        assertNull(manager.getSupermarketName());
+        assertNull(manager.getSupermarketId());
     }
 
     @Test
@@ -44,9 +44,9 @@ public class ManagerTest {
                 .username("bobsmith")
                 .role("manager")
                 .active(true)
-                .supermarketName("MegaMart");
+                .supermarketId("MegaMart");
 
-        String expected = "Manager.ManagerBuilder(id=2, firstName=Bob, lastName=Smith, password=password1234, username=bobsmith, role=manager, active=true, supermarketName=MegaMart)";
+        String expected = "Manager.ManagerBuilder(id=2, firstName=Bob, lastName=Smith, password=password1234, username=bobsmith, role=manager, active=true, supermarketId=MegaMart)";
         assertEquals(expected, builder.toString());
 
         Manager manager = builder.build();
@@ -57,6 +57,6 @@ public class ManagerTest {
         assertEquals("bobsmith", manager.getUsername());
         assertEquals("manager", manager.getRole());
         assertTrue(manager.isActive());
-        assertEquals("MegaMart", manager.getSupermarketName());
+        assertEquals("MegaMart", manager.getSupermarketId());
     }
 }
