@@ -94,8 +94,7 @@ tasks.jacocoTestReport {
     classDirectories.setFrom(files(classDirectories.files.map {
         fileTree(it) { exclude(
                 "**/*Application**",
-                "com/heymart/authenticate/**/dto/*",
-                "com/heymart/authenticate/**/service/auth/*",
+                "**/dto/*",
                 "**/config/*"
         ) }
     }))
