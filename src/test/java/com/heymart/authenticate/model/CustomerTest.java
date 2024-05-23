@@ -61,8 +61,8 @@ public class CustomerTest {
                 .password("password123")
                 .username("john_doe")
                 .role("user")
-                .active(true)
-        String expected = "Customer.CustomerBuilder(id=1, firstName=John, lastName=Doe, password=password123, username=john_doe, role=user, active=true, couponIds=[101, 102])";
+                .active(true);
+        String expected = "Customer.CustomerBuilder(id=1, firstName=John, lastName=Doe, password=password123, username=john_doe, role=user, active=true)";
         assertEquals(expected, builder.toString());
     }
 
