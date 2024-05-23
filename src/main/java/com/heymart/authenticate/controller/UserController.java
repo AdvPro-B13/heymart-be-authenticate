@@ -1,8 +1,7 @@
 package com.heymart.authenticate.controller;
 
-import com.heymart.authenticate.dto.VerifyRequest;
-import com.heymart.authenticate.service.auth.JwtService;
 import com.heymart.authenticate.service.UserService;
+import com.heymart.authenticate.service.auth.JwtService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class UserController {
     @Autowired
@@ -20,7 +19,7 @@ public class UserController {
     @Autowired
     private final UserService userService;
 
-    @GetMapping("/user")
+    @GetMapping("/get")
     public ResponseEntity<?> getUser(
             HttpServletRequest request
     ) {
