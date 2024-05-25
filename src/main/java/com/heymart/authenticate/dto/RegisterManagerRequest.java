@@ -11,7 +11,8 @@ import lombok.NoArgsConstructor;
 public class RegisterManagerRequest extends RegisterCustomerRequest {
     private String supermarketId;
 
-    public RegisterManagerRequest(String firstName, String lastName, String username, String password, String supermarketId) {
+    public RegisterManagerRequest(String firstName, String lastName, String username, String password,
+            String supermarketId) {
         super(firstName, lastName, username, password);
         this.supermarketId = supermarketId;
     }

@@ -1,14 +1,12 @@
 package com.heymart.authenticate.model;
 
 import com.heymart.authenticate.enums.*;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
 
 @Getter
 @AllArgsConstructor
@@ -20,14 +18,14 @@ import java.util.List;
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String firstname;
     private String lastname;
 
     private String password;
 
-    @Column(unique=true)
+    @Column(unique = true)
     private String username;
 
     private String role;
@@ -36,9 +34,9 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(role.equals("ADMIN")) {
+        if (role.equals("ADMIN")) {
             return ApplicationUserRole.ADMIN.getGrantedAuthority();
-        } else if(role.equals("MANAGER")){
+        } else if (role.equals("MANAGER")) {
             return ApplicationUserRole.MANAGER.getGrantedAuthority();
         } else {
             return ApplicationUserRole.CUSTOMER.getGrantedAuthority();

@@ -8,16 +8,18 @@ import java.util.stream.Collectors;
 
 import static com.heymart.authenticate.enums.ApplicationUserPermission.*;
 
-
 public enum ApplicationUserRole {
 
-    ADMIN(Sets.newHashSet(AUTH_CREATE_MANAGER, COUPON_READ)),
-    CUSTOMER(Sets.newHashSet(COUPON_READ)),
-    MANAGER(Sets.newHashSet(COUPON_CREATE, COUPON_READ, COUPON_DELETE, COUPON_UPDATE));
+    ADMIN(Sets.newHashSet(AUTH_CREATE_MANAGER, COUPON_READ, PRODUCT_READ)),
+    CUSTOMER(Sets.newHashSet(COUPON_READ, PRODUCT_READ)),
+    MANAGER(Sets.newHashSet(
+            // Coupon
+            COUPON_CREATE, COUPON_READ, COUPON_DELETE, COUPON_UPDATE,
 
+            // Product
+            PRODUCT_CREATE, PRODUCT_READ, PRODUCT_EDIT, PRODUCT_DELETE));
 
     private final Set<ApplicationUserPermission> permissions;
-
 
     ApplicationUserRole(Set<ApplicationUserPermission> permissions) {
         this.permissions = permissions;
@@ -28,9 +30,9 @@ public enum ApplicationUserRole {
     }
 
     public Set<SimpleGrantedAuthority> getGrantedAuthority() {
-        Set<SimpleGrantedAuthority> authorities = getPermissions().stream().map(permission -> new SimpleGrantedAuthority(permission.getPermission())).collect(Collectors.toSet());
-        authorities.add(new SimpleGrantedAuthority("ROLE_"+ this.name()));
+        Set<SimpleGrantedAuthority> authorities = getPermissions().stream()
+                .map(permission -> new SimpleGrantedAuthority(permission.getPermission())).collect(Collectors.toSet());
+        authorities.add(new SimpleGrantedAuthority("ROLE_" + this.name()));
         return authorities;
     }
 }
-
