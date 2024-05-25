@@ -40,6 +40,8 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> login(
             @RequestBody AuthenticationRequest request
     ) {
+        System.out.println(request.getPassword());
+        System.out.println(request.getUsername());
         return ResponseEntity.ok(authenticationService.authenticate(request));
     }
     @PostMapping("/create")
@@ -86,6 +88,16 @@ public class AuthenticationController {
 
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error validating token: " + e.getMessage());
+        }
+    }
+    @PostMapping("/check-token")
+    public ResponseEntity<?> checkToken(@RequestHeader("Authorization") String token) {
+        token = token.replace("Bearer ", "");
+
+        if (jwtService.validateJwtToken(token)) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid token");
         }
     }
 
