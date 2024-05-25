@@ -16,7 +16,16 @@ public enum ApplicationUserPermission {
     PRODUCT_READ("product:read"),
     PRODUCT_CREATE("product:create"),
     PRODUCT_EDIT("product:edit"),
-    PRODUCT_DELETE("product:delete");
+    PRODUCT_DELETE("product:delete"),
+
+    // User Balance
+    USER_BALANCE_CREATE("balance:ub_create"),
+    SUPERMARKET_BALANCE_CRATE("balance:sb_create"),
+    USER_BALANCE_READ("balance:ub_read"),
+    SUPERMARKET_BALANCE_READ("balance:sb_read"),
+    USER_BALANCE_UPDATE("balance:ub_update"),
+    SUPERMARKET_BALANCE_UPDATE("balance:sb_update"),
+    TRANSACTION_READ("transaction:read");
 
     private final String permission;
 
