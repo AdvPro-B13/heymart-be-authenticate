@@ -19,7 +19,9 @@ public enum ApplicationUserRole {
             // Supermarket Balance
             SUPERMARKET_BALANCE_CRATE, SUPERMARKET_BALANCE_READ, SUPERMARKET_BALANCE_UPDATE,
 
-            PRODUCT_CREATE, PRODUCT_READ, PRODUCT_EDIT, PRODUCT_DELETE));
+            // Product & Category
+            PRODUCT_CREATE, PRODUCT_READ, PRODUCT_EDIT, PRODUCT_DELETE,
+            CATEGORY_CREATE, CATEGORY_DELETE, CATEGORY_READ));
 
     private final Set<ApplicationUserPermission> permissions;
 
