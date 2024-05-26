@@ -29,6 +29,7 @@ public enum ApplicationUserPermission {
     SUPERMARKET_BALANCE_READ("balance:sb_read"),
     USER_BALANCE_UPDATE("balance:ub_update"),
     SUPERMARKET_BALANCE_UPDATE("balance:sb_update"),
+    BOTH_BALANCE_UPDATE("balance:both_update"),
     TRANSACTION_READ("transaction:read");
 
     private final String permission;
