@@ -2,8 +2,7 @@ name: Github CI
 
 on:
   push:
-    branches:
-      - dev
+    branches: ["*"]
 
 jobs:
   build:
